@@ -1,0 +1,42 @@
+<%= form_with(model: key_ref_map, local: true) do |form| %>
+  <% if key_ref_map.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(key_ref_map.errors.count, "error") %> prohibited this key_ref_map from being saved:</h2>
+
+      <ul>
+        <% key_ref_map.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :book %>
+    <%= form.text_field :book %>
+  </div>
+
+  <div class="field">
+    <%= form.label :chapter %>
+    <%= form.number_field :chapter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :verse_start %>
+    <%= form.number_field :verse_start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :verse_end %>
+    <%= form.number_field :verse_end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :keyword_id %>
+    <%= form.text_field :keyword_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

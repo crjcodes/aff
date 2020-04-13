@@ -1,0 +1,16 @@
+
+<h1>Show Keywords</h1>
+
+
+<table>
+  <tr>
+    <th>Keyword</th>
+  </tr>
+ 
+  <% @keywords.each do |keyword| %>
+    <tr>
+      <td><%= keyword.kw %></td>
+    </tr>
+  <% end %>
+</table>
+ 

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Book:</strong>
+  <%= @key_ref_map.book %>
+</p>
+
+<p>
+  <strong>Chapter:</strong>
+  <%= @key_ref_map.chapter %>
+</p>
+
+<p>
+  <strong>Verse start:</strong>
+  <%= @key_ref_map.verse_start %>
+</p>
+
+<p>
+  <strong>Verse end:</strong>
+  <%= @key_ref_map.verse_end %>
+</p>
+
+<p>
+  <strong>Keyword:</strong>
+  <%= @key_ref_map.keyword_id %>
+</p>
+
+<%= link_to 'Edit', edit_key_ref_map_path(@key_ref_map) %> |
+<%= link_to 'Back', key_ref_maps_path %>

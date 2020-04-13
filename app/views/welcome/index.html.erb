@@ -2,3 +2,20 @@
 <p>Find encouragement and support for your life.</p>
 
 <em>A demo web app to support the portfolio of crjcodes at CodeOnward.com</em>
+
+<h1>Show Keywords</h1>
+
+<%= form_tag("/key_ref_maps", method: "get") do %>
+  <%= select_tag("keywords", 
+    options_for_select(@keywords.order(id: :desc).all.collect{ |k| [k.kw.humanize, k.id] }), 
+    { prompt: "CHOOSE TOPIC", :multiple => :multiple, :size => 5} ) %>
+  <%= submit_tag("Find Verses")%> 
+<% end %>
+
+<p>Done!</p>
+
+
+
+
+
+
