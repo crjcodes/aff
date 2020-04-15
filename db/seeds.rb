@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+KeyRefMap.destroy_all
 Keyword.destroy_all
 
 #Keyword.create! (
@@ -20,7 +21,7 @@ anx = Keyword.create(kw: "anxiety")
 
 p "Created #{Keyword.count} affirm keywords"
 
-KeyRefMap.destroy_all
+
 
 KeyRefMap.create(keyword_id: enc.id, book: "Matthew", chapter: 6, verse_start: 34, verse_end: 34  )
 KeyRefMap.create(keyword_id: enc.id, book: "John", chapter: 14, verse_start: 27, verse_end: 27  )
@@ -33,5 +34,4 @@ KeyRefMap.create(keyword_id: anx.id, book: "John", chapter: 14, verse_start: 27,
 KeyRefMap.create(keyword_id: anx.id, book: "Proverbs", chapter: 12, verse_start: 25, verse_end: 25 )
 
 
-
-
+p "Created #{Keyword.count} Keyword-Reference maps"
