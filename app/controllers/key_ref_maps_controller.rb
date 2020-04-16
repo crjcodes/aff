@@ -1,10 +1,26 @@
 class KeyRefMapsController < ApplicationController
-  before_action :set_key_ref_map, only: [:show, :edit, :update, :destroy]
+  before_action :set_key_ref_map, only: [:index, :show, :edit, :update, :destroy]
+
+  helper_method :ref_match
+  helper_method :format_ref
+
+  def ref_match(keyword_id)
+    @ref_match = KeyRefMap.where("keyword_id = ?", keyword_id).limit(40)
+  end
+
+  def format_ref(krm)
+    verse = krm.verse_start
+    if krm.verse_end != krm.verse_start
+      verse = "#{verse}-#{krm.verse_end}"
+    end
+    @format_ref = krm.book + " #{krm.chapter}:#{verse}"
+  end
 
   # GET /key_ref_maps
   # GET /key_ref_maps.json
-  def index
-    @key_ref_maps = KeyRefMap.all
+  def index  
+    Rails.logger.warn "In index"
+    Rails.logger.warn params{'keyword_id'}
   end
 
   # GET /key_ref_maps/1
@@ -63,12 +79,20 @@ class KeyRefMapsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_key_ref_map
-      @key_ref_map = KeyRefMap.find(params[:id])
+      @key_ref_map = KeyRefMap.where("keyword_id = ?", params[:keyword_id]).limit(40)
+      @key_ref_map = ref_match(params[:keyword_id])
+      @keywords = Keyword.where("keyword_id = ?", params[:keyword_id]).limit(40)
+      @keywords = Keyword.where(nil)
+
+      Rails.logger.warn "In set_key_ref_map"
+      Rails.logger.warn @keywords.length
+        
     end
 
     # Only allow a list of trusted parameters through.
     def key_ref_map_params
-      params.require(:key_ref_map).permit(:book, :chapter, :verse_start, :verse_end, :keyword_id)
+      params.require(:key_ref_map, :keyword_id).permit(:book, :chapter, :verse_start, :verse_end)
     end
 end

@@ -6,19 +6,11 @@
 <h1>Show Keywords</h1>
 
 <%= form_tag("/key_ref_maps", method: "get") do %>
-  <%= select_tag("keywords", 
+  <%= select_tag("keyword_id[]", 
     options_for_select(@keywords.order(id: :desc).all.collect{ |k| [k.kw.humanize, k.id] }), 
     { prompt: "CHOOSE TOPIC", :multiple => :multiple, :size => 5} ) %>
-  <%= submit_tag("Find Verses")%> 
+  <%= submit_tag "Show" %> 
 <% end %>
-
-<p>Trial:</p>
-
-<%= form_with do %>
-  blah
-<% end %>
-
-<p>Done!</p>
 
 
 

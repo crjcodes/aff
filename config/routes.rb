@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :key_ref_maps
-  get 'welcome/index'
-
   resources :keywords
+
+  get 'welcome/index'
 
 #  root 'welcome#index'
   root 'welcome#index'

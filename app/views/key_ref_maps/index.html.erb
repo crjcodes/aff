@@ -1,35 +1,12 @@
-<p id="notice"><%= notice %></p>
+<% @keywords.each do |keyword| %> 
+  <h1> <%= keyword.kw.humanize %></h1>
+  <% ref_match(keyword.id).each do |krm| %> 
+    <p> <%= format_ref(krm) %></p>
+    <p>{stub for matching verse(s)}</p>
+  <% end %>
+<% end %>
 
-<h1>Key Ref Maps</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Book</th>
-      <th>Chapter</th>
-      <th>Verse start</th>
-      <th>Verse end</th>
-      <th>Keyword</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @key_ref_maps.each do |key_ref_map| %>
-      <tr>
-        <td><%= key_ref_map.book %></td>
-        <td><%= key_ref_map.chapter %></td>
-        <td><%= key_ref_map.verse_start %></td>
-        <td><%= key_ref_map.verse_end %></td>
-        <td><%= key_ref_map.keyword_id %></td>
-        <td><%= link_to 'Show', key_ref_map %></td>
-        <td><%= link_to 'Edit', edit_key_ref_map_path(key_ref_map) %></td>
-        <td><%= link_to 'Destroy', key_ref_map, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Key Ref Map', new_key_ref_map_path %>
