@@ -1,28 +1,61 @@
+//================================
+// typography
+
+$font-stack: Times-new-roman, serif;
+$font-size: calc(1em + 1vw);
+$line-height: 1.3em;
+
+
+@use "aff-colors";
+
+//================================
+// SIZING
+
+//--------------------------------
+// border
+
+$border-rad: 3px;
+$border-thick: 1px;
+$arrow-size: 6px;
+
+
+//================================
+// OTHER
+
+$trans-time: .3s;
+
+//================================
+// HTML ELEMENTS
+
+html {
+  font-size: $font-size; 
+  font-family: $font-stack;
+  line-height: $line-height;
+}
+
+button, input { 
+  font-size: inherit }
+
 body {
-  background-color: #fff;
-  color: #333;
+  background-color: aff-colors.$back;
+  color: aff-colors.$fore;
   margin: 33px; }
 
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px; }
+//--------------------------------
+// ANCHOR
+//
 
 a {
-  color: #000; }
+  color: $wine; }
 
 a:visited {
-  color: #666; }
+  color: $emerald; }
 
 a:hover {
-  color: #fff;
-  background-color: #000; }
+  color: $gold; }
 
+
+/*
 th {
   padding-bottom: 5px; }
 
@@ -63,3 +96,4 @@ div.actions {
 
 label {
   display: block; }
+*/
