@@ -1,0 +1,183 @@
+@import 'base';
+@import '../node_modules/rfs/scss';
+
+/*
+  Based on ideas gleaned from:
+    (1) https://fabriceleven.com/design/clever-way-to-change-the-drop-down-selector-arrow-icon/
+*/
+
+$ctrl-font-size: 1.11rem;
+$ctrl-line-height: 2.4rem;
+
+$ctrl-font-color: $wine;
+$ctrl-border-color: $wine;
+$ctrl-back-color: #ffffff;
+$ctrl-border-bottom-color: $med-light;
+$ctrl-border-color: $light;
+
+$ctrl-border-width: .063rem;
+$ctrl-width: 100%;
+$ctrl-min-width: 25rem; 
+$ctrl-max-width: 30rem;
+$ctrl-height: 100%;
+$ctrl-font-size: 1.05rem;
+$ctrl-right: 0rem;
+$ctrl-top: .6rem;
+
+$ctrl-opt-selected-fore: $light;
+$ctrl-opt-selected-back: $back-control-color;
+
+/* 
+   Replacment arrow from Fabric Eleven
+
+    wrapper
+        min-width 200px
+        margin top-bottom of 50px
+        margin left-right 33%
+
+    wrapper after
+        right: 11px, top: 18px, bottom-border 1px
+
+    select
+        width 100%, max-width 320px, height: 50px,
+        margin top-bot of 5px, padding l-r 24px, others 0
+        border: 1px
+
+  Using 1 rem = 16px gives
+    1px => .063rem    
+    5px => .313
+    11px => .688rem
+    16px => 1rem
+    18px => 1.125rem
+    24px => 1.5rem
+    50px => 3.125rem
+    200px => 12.5rem
+    320px => 20rem 
+*/
+.select_wrapper {
+
+    @include padding-top(.3rem);
+    @include padding-bottom(2rem);
+    @include padding-right(.3rem);
+    @include padding-left(.3rem);
+
+    @include rfs(0 0 0 0, margin);
+
+    @include rfs($ctrl-min-width, min-width);
+    @include rfs($ctrl-min-width, min-width);
+
+    display: block;
+    position: relatve;
+
+    //overflow: hidden;
+    //position: relative;
+    //float: left;
+}
+
+// To remove button from IE11, thank you Matt
+//select::-ms-expand {
+//    display: none;
+//}   
+/*
+.select_wrapper:after {
+    color: $ctrl-font-color;
+    border-bottom-color: $ctrl-border-bottom-color;
+    border-bottom-style: solid;    
+    background-color: $ctrl-back-color;
+
+    @include rfs($ctrl-border-width, border-bottom-width);
+
+    right: $ctrl-right;
+    //@include rfs($ctrl-right, right);
+    top: $ctrl-top;
+    //@include rfs($ctrl-top, top);    
+    @include rfs(.06rem .19rem, padding);
+
+    position: absolute;
+    pointer-events: none;
+
+    content: '<>';
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+*/    
+.select_wrapper select {
+/*    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+*/
+    color: $ctrl-font-color;
+    background-color: $ctrl-back-color;
+    background-image: none;
+    border-color: $ctrl-border-color;
+    border-style: solid;    
+
+    @include rfs($ctrl-border-width, border-width);
+
+    @include rfs($ctrl-font-size, font-size);
+    @include rfs($ctrl-line-height, line-height);
+    -ms-word-break: normal;
+    word-break: normal;
+
+    display: block;
+  //  float: right;
+
+    width: 100%;
+
+    @include rfs($ctrl-max-width, max-width);
+    @include rfs($ctrl-height, height);
+    margin: 0;
+
+    @include rfs(0 .2rem, padding);
+
+/*    
+    select:active, select.active {
+        background-color: $highlight-color;
+    }
+*/
+}
+
+select option {
+  background-color: $back-color;
+  color: $standout-color;
+
+  @include rfs(.15rem .5rem, padding);
+
+  &:hover {
+      background-color: $highlight-color;
+  }
+
+  &:focus {
+      background-color: pink;
+  }
+
+  &:active {
+    background-color: blue;
+  }
+
+  &:checked {
+    background-color: purple;
+    border: 1px solid purple;
+  }
+
+  &:not(:checked){
+    background-color: #ccc;
+  }
+
+  &:selected {
+    background-color: yellow;
+    border: 1px solid yellow;
+  }
+}
+
+/*
+option:focus,
+option:active,
+option:checked {
+  background: $accent-color;
+}
+*/
+
