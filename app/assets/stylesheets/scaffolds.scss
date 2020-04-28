@@ -1,31 +1,53 @@
-//================================
-// typography
-
-$font-stack: Times-new-roman, serif;
-$font-size: calc(1em + 1vw);
-$line-height: 1.3em;
-
-
-@use "aff-colors";
+@import 'reset';
+@import "../node_modules/rfs/scss";
+@import 'base';
+@import 'controls';
 
 //================================
-// SIZING
+// APPLY THEMED ELEMENTS
 
 //--------------------------------
-// border
+//  COLOR THEME
 
-$border-rad: 3px;
-$border-thick: 1px;
-$arrow-size: 6px;
+html {
+  background-color: $back-back-color;
+  color: $fore-color; 
+}
 
+body {
+  background-color: $back-color;
+  color: $fore-color; 
+}  
 
-//================================
-// OTHER
+  
+h1, h2, h3, h4, h5, h6 {
+  color: $back-color;
+  background-color: $standout-color;
+}
 
-$trans-time: .3s;
+em { color: $standout-color; }
 
-//================================
-// HTML ELEMENTS
+a {
+  color: $standout-color; }
+
+a:visited {
+  color: $accent-color; }
+
+a:hover {
+  color: $highlight-color; }
+
+.aff-header, .aff-content, .aff-footer  {
+  background-color: $back-color;
+  color: $fore-color;  
+}
+
+.select-wrapper {
+  background-color: $emerald;
+  border-color: $control-border-color;
+}
+
+//--------------------------------
+//  TYPOGRAPHY
 
 html {
   font-size: $font-size; 
@@ -33,67 +55,120 @@ html {
   line-height: $line-height;
 }
 
+body { line-height: $line-height; }
+
+h1 { @include font-size($h1-size); }
+h2 { @include font-size($h2-size); }
+h3 { @include font-size($h3-size); }
+h4 { @include font-size($h4-size); }
+h5 { @include font-size($h5-size); }
+
+em { 
+  @include font-size(1.05rem);
+  font-style: italic;
+}
+
 button, input { 
   font-size: inherit }
 
+.aff-tagline {
+  @include font-size(1.2rem);
+  font-style: italic;  
+}
+
+//================================
+// LAYOUT
+
 body {
-  background-color: aff-colors.$back;
-  color: aff-colors.$fore;
-  margin: 33px; }
+  @include margin-top(.5rem);
+  @include margin-bottom(.5rem);
+  @include margin-right(.5rem);
+  @include margin-left(.5rem);
 
-//--------------------------------
-// ANCHOR
-//
+  @include padding-top(1rem);
+  @include padding-bottom(1rem);
+  @include padding-right(.5rem);
+  @include padding-left(.5rem);
+}
 
-a {
-  color: $wine; }
+h1, h2, h3, h4, h5 {
+  @include padding-top(.9rem);
+  @include padding-bottom(.6rem);
+  @include padding-right(.4rem);
+  @include padding-left(.75rem);
 
-a:visited {
-  color: $emerald; }
+  @include margin-top(.5rem);
+  @include margin-bottom(.5rem);
+  @include margin-right(.01rem);
+  @include margin-left(.01rem);
+}
 
-a:hover {
-  color: $gold; }
+p {
+  @include padding-top(.5rem);
+  @include padding-bottom(.5rem);
+  @include padding-right(.01rem);
+  @include padding-left(.3rem);
+
+  @include margin-top(.02rem);
+  @include margin-bottom(.02rem);
+  @include margin-right(.01rem);
+  @include margin-left(.01rem);
+}
+
+.aff-header, .aff-content, .aff-footer {
+  @include padding-left(1rem);
+  @include padding-right(1rem);
+
+  @include margin-left(.01rem);  
+  @include margin-right(.01rem);
+
+}
+
+.aff-header {
+  @include padding-top(0rem);
+  @include padding-bottom(0rem);
+  
+  @include margin-top(0rem);
+  @include margin-bottom(0rem);
+}
+
+.aff-content {
+  @include padding-top(2rem);
+  @include padding-bottom(2rem);
+
+  @include margin-top(1rem);
+  @include margin-bottom(.02rem);
+}
+
+.aff-footer {
+  @include padding-top(2rem);
+  @include padding-bottom(2rem);
+  @include margin-top(1rem);
+  @include margin-bottom(.02rem);
+}
+
+.aff-header img {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.aff-tagline {
+  position: relative;
+  display: inline-block;
+
+  @include margin-top(.02rem);
+  @include margin-bottom(.02rem);
+  @include margin-right(.01rem);
+  @include margin-left(.01rem);  
+}
 
 
-/*
-th {
-  padding-bottom: 5px; }
+.aff-header, .aff-footer, .aff-content {
+  box-shadow: 0 7px 7px 0 $shadow-color, 0 8px 22px 0 $light-shadow-color;
+}
 
-td {
-  padding: 0 5px 7px; }
+.affcontent { padding: 0; }
 
-div.field,
-div.actions {
-  margin-bottom: 10px; }
 
-#notice {
-  color: green; }
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table; }
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px 7px 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0; }
-
-#error_explanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px -7px 0;
-  background-color: #c00;
-  color: #fff; }
-
-#error_explanation ul li {
-  font-size: 12px;
-  list-style: square; }
-
-label {
-  display: block; }
-*/
