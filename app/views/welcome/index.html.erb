@@ -1,21 +1,16 @@
-<h1>Welcome to Affirm</h1>
-<p>Find encouragement and support for your life.</p>
-
-<em>A demo web app to support the portfolio of crjcodes at CodeOnward.com</em>
-
-<h2>Choose Keywords</h2>
-
-<div class="select_wrapper">
+<h1>Welcome</h1>
+<P>Want some encouraging Bible verses?  Just select your topic below.</P>
 <%= form_tag("/key_ref_maps", method: "get") do %>
+  <div class="select_wrapper">
   <%= select_tag("keyword_id[]", 
-    options_for_select(@keywords.order(id: :desc).all.collect{ |k| [k.kw.humanize, k.id] }), 
-    :multiple => :multiple, 
-    :size => 5, 
-    :class => "fstdropdown-select"
+    options_for_select(@keywords.order(id: :desc).all.collect{ |k| [k.kw.humanize, k.id] }),     
+    :autofocus => true, 
+    :required => true,
+    :size => 5
     ) %>
+  </div>
   <%= submit_tag "Show" %> 
 <% end %>
-</div>
 
 
 
