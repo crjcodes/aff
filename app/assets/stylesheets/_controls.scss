@@ -1,19 +1,18 @@
 @import 'base';
 @import '../node_modules/rfs/scss';
 
-/*
-  Based on ideas gleaned from:
-    (1) https://fabriceleven.com/design/clever-way-to-change-the-drop-down-selector-arrow-icon/
-*/
 
 $ctrl-font-size: 1.11rem;
 $ctrl-line-height: 2.4rem;
 
-$ctrl-font-color: $wine;
+$ctrl-font-color: $light;
 $ctrl-border-color: $wine;
-$ctrl-back-color: #ffffff;
-$ctrl-border-bottom-color: $med-light;
-$ctrl-border-color: $light;
+$ctrl-fill-color: $light;
+$ctrl-back-color: $dark_blue;
+$ctrl-border-color: $standout-color;
+$ctrl-shadow-color: $dark-blue;
+$ctrl-light-shadow-color : $light-shadow-color;
+$ctrl-highlight-color: $gold;
 
 $ctrl-border-width: .063rem;
 $ctrl-width: 100%;
@@ -24,36 +23,9 @@ $ctrl-font-size: 1.05rem;
 $ctrl-right: 0rem;
 $ctrl-top: .6rem;
 
-$ctrl-opt-selected-fore: $light;
-$ctrl-opt-selected-back: $back-control-color;
+$ctrl-opt-back: $accent-color;
+$ctrl-opt-fore: $standout-color;
 
-/* 
-   Replacment arrow from Fabric Eleven
-
-    wrapper
-        min-width 200px
-        margin top-bottom of 50px
-        margin left-right 33%
-
-    wrapper after
-        right: 11px, top: 18px, bottom-border 1px
-
-    select
-        width 100%, max-width 320px, height: 50px,
-        margin top-bot of 5px, padding l-r 24px, others 0
-        border: 1px
-
-  Using 1 rem = 16px gives
-    1px => .063rem    
-    5px => .313
-    11px => .688rem
-    16px => 1rem
-    18px => 1.125rem
-    24px => 1.5rem
-    50px => 3.125rem
-    200px => 12.5rem
-    320px => 20rem 
-*/
 .select_wrapper {
 
     @include padding-top(.3rem);
@@ -69,51 +41,17 @@ $ctrl-opt-selected-back: $back-control-color;
     display: block;
     position: relatve;
 
-    //overflow: hidden;
-    //position: relative;
-    //float: left;
 }
 
-// To remove button from IE11, thank you Matt
-//select::-ms-expand {
-//    display: none;
-//}   
-/*
-.select_wrapper:after {
-    color: $ctrl-font-color;
-    border-bottom-color: $ctrl-border-bottom-color;
-    border-bottom-style: solid;    
-    background-color: $ctrl-back-color;
-
-    @include rfs($ctrl-border-width, border-bottom-width);
-
-    right: $ctrl-right;
-    //@include rfs($ctrl-right, right);
-    top: $ctrl-top;
-    //@include rfs($ctrl-top, top);    
-    @include rfs(.06rem .19rem, padding);
-
-    position: absolute;
-    pointer-events: none;
-
-    content: '<>';
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-}
-*/    
 .select_wrapper select {
-/*    
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-*/
+    
     color: $ctrl-font-color;
-    background-color: $ctrl-back-color;
+    background-color: $ctrl-fill-color;
     background-image: none;
     border-color: $ctrl-border-color;
     border-style: solid;    
+
+    font-weight: bold;
 
     @include rfs($ctrl-border-width, border-width);
 
@@ -123,61 +61,84 @@ $ctrl-opt-selected-back: $back-control-color;
     word-break: normal;
 
     display: block;
-  //  float: right;
-
     width: 100%;
 
     @include rfs($ctrl-max-width, max-width);
-    @include rfs($ctrl-height, height);
     margin: 0;
+    @include rfs(.4rem .4rem, padding);
 
-    @include rfs(0 .2rem, padding);
-
-/*    
+    
     select:active, select.active {
         background-color: $highlight-color;
     }
-*/
 }
 
 select option {
-  background-color: $back-color;
-  color: $standout-color;
+  @include rfs(.5rem .8rem, padding);
+  @include rfs(1.1rem .5rem, margin);
 
-  @include rfs(.15rem .5rem, padding);
-
-  &:hover {
-      background-color: $highlight-color;
-  }
-
-  &:focus {
-      background-color: pink;
-  }
-
-  &:active {
-    background-color: blue;
-  }
-
+  
   &:checked {
-    background-color: purple;
-    border: 1px solid purple;
+    font-weight: bolder;
+    background-color: $ctrl-highlight-color;
+    border: 1px solid $ctrl-highlight-color;
+    border-radius: 3px;
+    box-shadow: 0 7px 7px 0 $ctrl-shadow-color, 0 8px 22px 0 $ctrl-light-shadow-color;
   }
 
   &:not(:checked){
-    background-color: #ccc;
-  }
-
-  &:selected {
-    background-color: yellow;
-    border: 1px solid yellow;
+    font-weight: normal;
+    background-color: $ctrl-back-color;
   }
 }
 
-/*
-option:focus,
-option:active,
-option:checked {
-  background: $accent-color;
+.aff-button {
+    @include padding(.4rem .7rem);
+    
+    border-radius: 6px;
+    //box-shadow: 0 4px 4px 0 $ctrl-shadow-color, 0 8px 22px 0 $ctrl-light-shadow-color;
 }
+
+/* 
+  From 
+     https://css-tricks.com/overriding-default-button-styles/
 */
+.aff-button  {
+    
+    background: $ctrl-back-color;
+    color: $ctrl-font-color;
 
+    border: 1px solid $ctrl-border-color;
+
+    font-weight: bold;
+    font-size: 1.2rem;
+
+    display: inline-block;
+    padding: .8rem 1.7rem;
+    margin: 0;
+    text-decoration: none;
+
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    box-shadow: 0 4px 4px 0 $ctrl-shadow-color, 0 7px 9px 0 $ctrl-light-shadow-color;    
+}
+
+.aff-button:hover,
+.aff-button:focus {
+    background-color: $ctrl-highlight-color;
+    border-color: $ctrl-highlight-color;
+}
+
+.aff-button:focus {
+    outline: 1px solid $light-shadow-color;
+    outline-offset: -4px;
+}
+
+.aff-button:active {
+    transform: scale(0.99);
+}
