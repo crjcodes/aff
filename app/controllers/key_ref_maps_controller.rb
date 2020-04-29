@@ -81,10 +81,9 @@ class KeyRefMapsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_key_ref_map
-      @key_ref_map = KeyRefMap.where("keyword_id = ?", params[:keyword_id]).limit(40)
-      @key_ref_map = ref_match(params[:keyword_id])
-      @keywords = Keyword.where("keyword_id = ?", params[:keyword_id]).limit(40)
-      @keywords = Keyword.where(nil)
+      kid = params[:keyword_id]
+      @key_ref_map = KeyRefMap.where("keyword_id = ?", kid).limit(40)
+      @keywords = Keyword.where("id = ?", kid).limit(40)
 
       Rails.logger.warn "In set_key_ref_map"
       Rails.logger.warn @keywords.length
