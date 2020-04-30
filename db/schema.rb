@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2020_04_10_163352) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "key_ref_maps", force: :cascade do |t|
     t.string "book"
     t.integer "chapter"
     t.integer "verse_start"
     t.integer "verse_end"
-    t.integer "keyword_id", null: false
+    t.bigint "keyword_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["keyword_id"], name: "index_key_ref_maps_on_keyword_id"
