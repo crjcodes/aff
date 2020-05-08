@@ -24,7 +24,7 @@ The submission returns a list of verses that match.
     * SASS
     * postgres replacing sqlite3
 
-2. Ruby 2.6.4
+2. Ruby 2.6.6
 
 3. (TODO: Deployment via Heroku)
 

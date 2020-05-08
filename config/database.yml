@@ -5,7 +5,7 @@ default: &default
   encoding: unicode
   database: aff_dev
   username: vagrant
-  password: aff1
+  password: 555.super-secret
   timeout: 5000  
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
